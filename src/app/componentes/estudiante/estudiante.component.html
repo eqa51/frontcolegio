@@ -1,0 +1,51 @@
+<div class="container mt-5 border border-dark">
+  <div class="row d-flex justify-content-between my-2">
+    <div class="col-auto px-5">
+      <h1>Estudiantes</h1>
+    </div>
+    <div class="col-auto px-5">
+      <button mat-raised-button color="primary" (click)="openDialog()">
+        Nuevo
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <form class="px-5">
+      <mat-form-field class="example-full-width col-md-8">
+        <mat-label>Buscar</mat-label>
+        <input type="text" matInput placeholder="Buscar" />
+      </mat-form-field>
+    </form>
+  </div>
+</div>
+<div class="container mt-0 border border-dark">
+  <div class="card-group">
+    <mat-card class="card m-2 p-1" *ngFor="let per of personas">
+      <img
+        class="p-4 imagen"
+        mat-card-image
+        [src]="per.foto | imagen"
+        alt="Photo of a Shiba Inu"
+      />
+      <mat-card-content class="text-center">
+        <mat-card-title
+          >{{ per.nom_persona }} {{ per.ape_pate_pers }}</mat-card-title
+        >
+        <mat-card-subtitle>{{ per.fecha_naci | edad }}</mat-card-subtitle>
+        <mat-card-subtitle
+          >{{ per.nivel }} /{{ per.desc_grado }}</mat-card-subtitle
+        >
+      </mat-card-content>
+      <mat-card-actions class="text-center my-2">
+        <button
+          (click)="borrar(per.nid_persona)"
+          mat-raised-button
+          color="warn"
+        >
+          Borrar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

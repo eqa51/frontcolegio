@@ -1,0 +1,72 @@
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+  <div class="row d-flex justify-content-between my-2">
+    <div class="col-auto px-5">
+      <h1>Estudiantes</h1>
+    </div>
+    <div (click)="onNoClick('hola')" class="col-auto px-5">
+      <div class="example-button-container">
+        <button mat-mini-fab disabled>
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <mat-form-field class="example-full-width col-md-6">
+      <mat-label>Nombres</mat-label>
+      <input formControlName="nombres" matInput placeholder="Nombres" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width col-md-6">
+      <mat-label>Apellido Paterno</mat-label>
+      <input
+        formControlName="ApellidoPaterno"
+        matInput
+        placeholder="Apellido Paterno"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width col-md-6">
+      <mat-label>Apellido Materno</mat-label>
+      <input
+        formControlName="ApellidoMaterno"
+        matInput
+        placeholder="Apellido Materno"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width col-md-6">
+      <mat-label>Grado</mat-label>
+      <mat-select formControlName="grado">
+        <mat-option *ngFor="let grado of grados" [value]="grado.nid_grado">
+          {{ grado.desc_grado }} / {{ grado.nivel }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="col-md-6">
+      <input
+        (change)="calcularEdad($event)"
+        formControlName="fecha"
+        type="date"
+      />
+    </div>
+    <mat-form-field class="example-full-width col-md-6">
+      <mat-label>Edad</mat-label>
+      <input matInput disabled="true" [value]="aniosdelestudiante" />
+    </mat-form-field>
+
+    <div>
+      <input
+        (change)="capturarArchivo($event)"
+        formControlName="imagen"
+        type="file"
+      />
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <button type="submit" mat-raised-button color="primary">Agregar</button>
+    </div>
+  </div>
+</form>
